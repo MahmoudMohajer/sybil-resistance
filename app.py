@@ -42,17 +42,25 @@ tokens = st.slider(
 votes = st.slider(
     'select range of votes',
     1,
-    3500,
-    (1,3500),
-    step=100
+    35000,
+    (1,35000),
+    step=99
+)
+money = st.slider(
+    'select range of raised amount',
+    1,
+    85000,
+    (1,85000),
+    step=50
 )
 
 con_1= f'Variety_of_days >= {days[0]} & Variety_of_days <= {days[1]}'
 con_2 = f'Variety_of_tokens >= {tokens[0]} & Variety_of_tokens <={tokens[1]}'
 con_3 = f'Votes >= {votes[0]} & Votes <= {votes[1]}'
+con_4 = f'Total_raised >={money[0]} & Total_raised <= {money[1]}'
 
 st.dataframe(
-    data.query(f'{con_1} & {con_2} & {con_3}'),
+    data.query(f'{con_1} & {con_2} & {con_3} & {con_4}'),
     width=5000,
     height=500
     )
