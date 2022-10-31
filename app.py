@@ -56,3 +56,18 @@ st.dataframe(
     width=5000,
     height=500
     )
+
+"I looked at the distribution of amounts of donations in USDT and out of 432k, 300k of them were in"
+"range of **1-2** Dollars."
+st.image('donation_dist.jpg', 'distribution of amount in USDT donation by each donor')
+
+"as you can see we have very skewed distribution(right skewed), and it is economically optimized for"
+"sybils to donate 1 USDT with each fake user and have maximium influence. but if we also consider"
+"diverisity of donations as in table above by standard deviation of donations, the weight of "
+"performing a sybil attack will get heavier and hard to lift."
+
+st.image('clusters.jpeg', 'Categorizing groups of grants by Machine learning')
+
+"the clusters show majority of grants don't get much out of matching pool. because of"
+"outliers(Monopolists) there's small room for 'Poor' cluster to get a meaningful share out of the matching"
+"pool, but middle class is better. it is 50-50 for middle class. and Monopolists control majority of matching pool."
