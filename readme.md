@@ -1,4 +1,4 @@
-<p><h1>Slay Sybils, win prizes</p>
+<p><h1>Slay Sybils, win the battle</p>
 <h3>I use data analysis to check data and find sybils attacks</h3>
 
 
