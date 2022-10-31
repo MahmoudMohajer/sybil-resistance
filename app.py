@@ -62,13 +62,18 @@ st.dataframe(
 
 "you also can get details of Grant by inserting 'grant_id'"
 
-grant = st.text_input('enter the grant_id', 'grant_id')
-
-st.dataframe(
+try:
+    grant = st.text_input('enter the grant_id', 81, placeholder='grant_id')
+    grant = float(grant)
+    st.dataframe(
     data_2.query(f'grant_id == {grant}'),
     width=5000,
     height=50
-)
+    )
+except Exception: 
+    st.write('**please only insert numbers not string**')
+
+
 
 "I looked at the distribution of amounts of donations in USDT and out of 432k, 300k of them were in"
 "range of **1-2** Dollars."
