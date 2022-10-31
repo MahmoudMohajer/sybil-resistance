@@ -25,4 +25,34 @@ st.title("Sybil behavior Detection dashboard")
 "the table below shows the diffrent levels of 'Variability' accross all grants who participated in Gitcoin"
 "Grant round 15."
 
-st.write(data.head(20))
+days = st.slider(
+    'select range of days',
+    1,
+    16,
+    (1,16)
+)
+
+tokens = st.slider(
+    'select range of tokens',
+    1,
+    18,
+    (1,18)
+)
+
+votes = st.slider(
+    'select range of votes',
+    1,
+    3500,
+    (1,3500),
+    step=100
+)
+
+con_1= f'Variety_of_days >= {days[0]} & Variety_of_days <= {days[1]}'
+con_2 = f'Variety_of_tokens >= {tokens[0]} & Variety_of_tokens <={tokens[1]}'
+con_3 = f'Votes >= {votes[0]} & Votes <= {votes[1]}'
+
+st.dataframe(
+    data.query(f'{con_1} & {con_2} & {con_3}'),
+    width=5000,
+    height=500
+    )
