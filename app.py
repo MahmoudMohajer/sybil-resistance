@@ -2,20 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+@st.cache
+def read_data(dir):
 
+    data = pd.read_csv(dir)
+    return data
 
-data = pd.read_csv('grant_profile.csv')
-
-
-
-
-
-
-
-
-
-
-
+data_1 = read_data('grant_profile.csv')
+data_2 = read_data('grant_info.csv')
 
 
 st.title("Sybil behavior Detection dashboard")
@@ -60,10 +54,20 @@ con_3 = f'Votes >= {votes[0]} & Votes <= {votes[1]}'
 con_4 = f'Total_raised >={money[0]} & Total_raised <= {money[1]}'
 
 st.dataframe(
-    data.query(f'{con_1} & {con_2} & {con_3} & {con_4}'),
+    data_1.query(f'{con_1} & {con_2} & {con_3} & {con_4}'),
     width=5000,
     height=500
     )
+
+"you also can get details of Grant by inserting 'grant_id'"
+
+grant = st.text_input('enter the grant_id', 'grant_id')
+
+st.dataframe(
+    data_2.query(f'grant_id == {grant}'),
+    width=5000,
+    height=50
+)
 
 "I looked at the distribution of amounts of donations in USDT and out of 432k, 300k of them were in"
 "range of **1-2** Dollars."
