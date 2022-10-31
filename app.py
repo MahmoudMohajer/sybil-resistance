@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.express as px
 
 @st.cache
 def read_data(dir):
@@ -83,3 +84,9 @@ st.image('clusters.jpeg', 'Categorizing groups of grants by Machine learning')
 "the clusters show majority of grants don't get much out of matching pool. because of"
 "outliers(Monopolists) there's small room for 'Poor' cluster to get a meaningful share out of the matching"
 "pool, but middle class is better. it is 50-50 for middle class. and Monopolists control majority of matching pool."
+
+st.subheader('Tree Map of Grants based on count of their Votes')
+
+fig = px.treemap(data_frame=data_1, path=['Title'], values='Votes')
+
+st.plotly_chart(fig, use_container_width=True)
